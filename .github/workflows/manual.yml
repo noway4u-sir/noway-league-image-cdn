@@ -32,4 +32,3 @@ jobs:
       # run any `bun` or `bunx` command
       - run: bun install
       - run: bun .
-      - run: bun run build
