@@ -23,6 +23,7 @@ export type SummonerSpellDataMap = {
 export type SummonerSpellInformation = {
   name: string;
   description: string;
+  key: string;
   plaintext: string;
   image: {
     full: string;
@@ -45,7 +46,7 @@ export const downloadAndResizeSummonerSpellImage = async (spells: PartialSummone
     const options = {
       basePath: "./images/spells",
       originalSizeOutputDir: "full",
-      fileNamesToUse: [`${key}.png`],
+      fileNamesToUse: [`${key}.png`, `${spell.key}.png`],
       extraSizes: [
         { width: 32, path: "32x" },
       ]
