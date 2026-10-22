@@ -33,6 +33,11 @@ export const uploadImagesFolder = async (cwd: string = 'images') => {
       console.log('uploaded file: ', fullFilePath)
       console.log('response: ', res.$metadata.requestId)
     }))
+    // Keep artwork uploads bounded: do not retain every skin's image in memory.
+    if (promises.length === 8) {
+      await Promise.all(promises);
+      promises.length = 0;
+    }
   }
 
   await Promise.all(promises)

@@ -1,4 +1,4 @@
-import { createChampionMap, downloadChampionSquareImagesNew, getChampionsForPatch } from "./champs";
+import { createChampionMap, downloadChampionArtImages, downloadChampionSquareImagesNew, getChampionsForPatch } from "./champs";
 import { downloadAndResizeItemImage, downloadItemsForPatch } from "./items";
 import { downloadAndResizeMasteryImage, downloadMasteriesForPatch, mapRunesReforgedResponseToImageInfo } from "./masteries";
 import { uploadImagesFolder } from "./r2";
@@ -22,6 +22,7 @@ export const downloadChampionSquareImages = async () => {
   const champions = await getChampionsForPatch(patchVersion);
   const championMap = createChampionMap(champions, patchVersion);
   await downloadChampionSquareImagesNew(championMap);
+  await downloadChampionArtImages(championMap, patchVersion);
 }
 
 export const downloadItems = async () => {
