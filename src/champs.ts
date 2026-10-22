@@ -68,7 +68,8 @@ export const downloadChampionArtImages = async (
       // Chromas share the parent's art and have no standalone image in Data Dragon.
       if (skin.parentSkin !== undefined) continue;
       for (const kind of ["splash", "loading"]) {
-        const fileName = `${champion.id}_${skin.num}.jpg`;
+        const name = champion.id.toLocaleLowerCase() === 'fiddlesticks' ? 'FiddleSticks' : champion.id;
+        const fileName = `${name}_${skin.num}.jpg`;
         await downloadAndResizeImage(
           `https://ddragon.leagueoflegends.com/cdn/img/champion/${kind}/${fileName}`,
           {
