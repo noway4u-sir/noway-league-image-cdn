@@ -29,6 +29,7 @@ export type ResizeImageOptions = {
 
 
 export const downloadAndResizeImage = async (url: string, options: ResizeImageOptions) => {
+  try {
   // Download the image
   const [firstFileName, ...restFileNames] = options.fileNamesToUse;
   // Make folder if not exists
@@ -52,6 +53,9 @@ export const downloadAndResizeImage = async (url: string, options: ResizeImageOp
       const copiedResizedOutPath = `${options.basePath}/${path}/${fileName}`;
       await Bun.write(copiedResizedOutPath, Bun.file(resizedOutPath));
     }
+  }}
+  catch(err) {
+    console.log("Image Download Failed:", err);
   }
 }
 
